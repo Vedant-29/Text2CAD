@@ -206,11 +206,11 @@ def test_model(
                     for i in range(vec_dict["cad_vec"].shape[0]):
                         uid, level = uid_level[i].split("_")
                         # if topk_index == 1:
-                        if uid[i] not in test_acc_uid:
-                            test_acc_uid[uid[i]] = {}
+                        if uid not in test_acc_uid:
+                            test_acc_uid[uid] = {}
 
-                        if level not in test_acc_uid[uid[i]]:
-                            test_acc_uid[uid[i]][level] = {}  # {"response":response}
+                        if level not in test_acc_uid[uid]:
+                            test_acc_uid[uid][level] = {}  # {"response":response}
 
                         is_invalid = 0
                         try:
@@ -243,18 +243,18 @@ def test_model(
 
                         # Save the model prediction output
                         try:
-                            test_acc_uid[uid[i]][level]["pred_cad_vec"].append(
+                            test_acc_uid[uid][level]["pred_cad_vec"].append(
                                 pred_cad_seq_dict["cad_vec"][i].cpu().numpy()
                             )
                         except:
-                            test_acc_uid[uid[i]][level]["pred_cad_vec"] = [
+                            test_acc_uid[uid][level]["pred_cad_vec"] = [
                                 pred_cad_seq_dict["cad_vec"][i].cpu().numpy()
                             ]
                             # Adding Ground Truth Label
-                            test_acc_uid[uid[i]][level]["gt_cad_vec"] = (
+                            test_acc_uid[uid][level]["gt_cad_vec"] = (
                                 vec_dict["cad_vec"][i].cpu().numpy()
                             )
-                            test_acc_uid[uid[i]][level]["cd"] = []
+                            test_acc_uid[uid][level]["cd"] = []
 
                         # If the model is valid, add the chamfer distance (Multiplied by 1000)
                         if is_invalid == 0:
@@ -268,11 +268,11 @@ def test_model(
                         else:  # If the model is invalid, -1 chamfer distance (will be filtered in the evaluation stage)
                             cd = -1
 
-                        test_acc_uid[uid[i]][level]["cd"].append(cd)
+                        test_acc_uid[uid][level]["cd"].append(cd)
 
-                        pbar.set_postfix({"uid": uid[i], "cd": cd})
+                        pbar.set_postfix({"uid": uid, "cd": cd})
 
-                        test_acc_uid[uid[i]][level]["is_invalid"] = is_invalid
+                        test_acc_uid[uid][level]["is_invalid"] = is_invalid
 
                 # if not config['debug']:
                 #     # Save the pkl files
