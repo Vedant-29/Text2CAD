@@ -55,6 +55,14 @@ class FaceSequence(object):
 
         return FaceSequence(loopdata, True)
 
+    @staticmethod
+    def from_minimal_json(face_stat):
+        loop_seq = []
+        for _, val in face_stat.items():
+            loop_seq.append(LoopSequence.from_minimal_json(val))
+        
+        return FaceSequence(loop_seq, False)
+    
     def to_vec(self):
         """
         Vector Representation of Face

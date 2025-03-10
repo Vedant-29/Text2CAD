@@ -46,6 +46,14 @@ class Line(Curve):
         )
         return Line(metadata)
 
+    @staticmethod
+    def from_minimal_json(line_stat):
+        metadata={
+            "start_point": np.array(line_stat['Start Point']),
+            "end_point": np.array(line_stat['End Point'])
+        }
+        return Line(metadata)
+
     def to_vec(self):
         """
         vector representation of line

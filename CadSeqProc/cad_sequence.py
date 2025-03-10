@@ -417,6 +417,22 @@ class CADSequence(object):
 
         return CADSequence(sketch_seq, extrude_seq, bbox)
 
+    @staticmethod
+    def from_minimal_json(all_stat):
+        sketch_seq = []
+        extrude_seq = []
+        
+        for _, val in all_stat["parts"].items():
+            sketch_ops = SketchSequence.from_minimal_json(val['sketch'], 
+                                                           val['coordinate_system'])
+            sketch_seq.append(sketch_ops)
+            
+            extrude_ops = ExtrudeSequence.from_minimal_json(val['extrusion'])
+            extrude_ops.coordsystem = sketch_ops.coordsystem
+            extrude_seq.append(extrude_ops)
+    
+        return CADSequence(sketch_seq, extrude_seq, None)
+            
     def __repr__(self) -> str:
         s = f"CAD Sequence:\n"
         for i, skt in enumerate(self.sketch_seq):

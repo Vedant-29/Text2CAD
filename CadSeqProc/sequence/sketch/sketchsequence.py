@@ -81,6 +81,15 @@ class SketchSequence(object):
 
         return SketchSequence(facedata=facedata, coordsystem=coordsystem, reorder=True)
 
+    @staticmethod
+    def from_minimal_json(sketch_stat, coord_system):
+        face_seq = []
+        for _, val in sketch_stat.items():
+            face_seq.append(FaceSequence.from_minimal_json(val))
+        
+        coord_system=CoordinateSystem.from_minimal_json(coord_system)
+        return SketchSequence(face_seq, coord_system, True)
+    
     def sample_points(self, n_points, point_dimension=3):
         all_points = []
 

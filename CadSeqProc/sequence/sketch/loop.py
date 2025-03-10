@@ -91,6 +91,21 @@ class LoopSequence(object):
 
         return LoopSequence(curvedata, is_outer, False)
 
+    @staticmethod
+    def from_minimal_json(loop_stat):
+        curvedata = []
+        
+        for curve_id, val in loop_stat.items():
+            curve_type = curve_id.split("_")[0]
+            if curve_type == "line":
+                curvedata.append(Line.from_minimal_json(val))
+            if curve_type == "arc":
+                curvedata.append(Arc.from_minimal_json(val))
+            if curve_type == "circle":
+                curvedata.append(Circle.from_minimal_json(val))
+
+        return LoopSequence(curvedata, False, False)
+
     @property
     def start_point(self):
         # if len(self.curvedata)>1:

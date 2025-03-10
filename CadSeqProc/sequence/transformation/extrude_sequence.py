@@ -91,6 +91,17 @@ class ExtrudeSequence(object):
 
         return ExtrudeSequence(metadata)
 
+    @staticmethod
+    def from_minimal_json(extrude_entity):
+        metadata={
+            "extent_one": extrude_entity['extrude_depth_towards_normal'],
+            "extent_two": extrude_entity['extrude_depth_opposite_normal'],
+            "sketch_size": extrude_entity['sketch_scale'],
+            "boolean": EXTRUDE_OPERATIONS.index(extrude_entity["operation"])
+        }
+    
+        return ExtrudeSequence(metadata)
+    
     @property
     def token_index(self):
         return END_TOKEN.index("END_EXTRUSION")

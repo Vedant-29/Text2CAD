@@ -66,6 +66,14 @@ class Circle(Curve):
         )
 
         return Circle(metadata)
+    
+    @staticmethod
+    def from_minimal_json(circle_stat):
+        metadata={
+            "center": np.array(circle_stat['Center']),
+            "radius": circle_stat['Radius']
+        }
+        return Circle(metadata)
 
     @property
     def bbox(self):
@@ -201,13 +209,16 @@ class Circle(Curve):
         center = create_point_from_array(
             coordsystem.rotate_vec(self.metadata["center"])
         )
-        radius = abs(
-            float(
-                point_distance(
-                    self.metadata["center"], self.metadata["pt1"], type="l1"
+        if "radius" not in self.metadata:
+            radius = abs(
+                float(
+                    point_distance(
+                        self.metadata["center"], self.metadata["pt1"], type="l1"
+                    )
                 )
             )
-        )
+        else:
+            radius = self.metadata["radius"]
 
         axis = gp_Ax2(center, gp_Dir(*normal))
         circle = gp_Circ(axis, radius)

@@ -73,6 +73,22 @@ class CoordinateSystem(object):
         return coord
 
     @staticmethod
+    def from_minimal_json(transform_dict):
+        metadata={
+            "origin": np.array(transform_dict['Translation Vector']),
+            "euler_angles": np.array(transform_dict['Euler Angles']),
+            
+        }
+        rot_matrix = R.from_euler(
+            seq="zyx", angles=metadata["euler_angles"], degrees=False
+        ).as_matrix()
+        metadata['x_axis'] = rot_matrix[0]
+        metadata['y_axis'] = rot_matrix[1]
+        metadata['z_axis'] = rot_matrix[2]
+        
+        return CoordinateSystem(metadata)
+    
+    @staticmethod
     def from_vec(vec, bit, post_processing):
         assert len(vec) == 6, clglogger.error(f"Wrong number of inputs {vec}")
         metadata = {}

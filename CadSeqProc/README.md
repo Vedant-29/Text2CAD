@@ -44,8 +44,32 @@ brep=cad_seq.save_points(filename=filename, output_dir=output_dir, n_points=8192
 
 ```
 
+### 3. Generate Mesh/Brep/Point Cloud from Minimal Json
 
-### 3. To Check the parameters of the CAD Model
+```python
+import json
+from cad_sequence import CADSequence
+from utility.macro import MAX_CAD_SEQ_LEN, N_BIT
+
+json_path="./data/cad_json/0000/minimal_json.json"
+with open(json_path,"r") as f:
+    json_data=json.load(f)
+
+cad_seq=CADSequence.from_minimal_json(json_data)
+
+# <!-- ------------------------ Generate Brep or Mesh ------------------------ -->
+# NOTE: It will be saved in os.path.join(output_dir,filename+".step")
+
+brep=cad_seq.save_stp(filename=filename, output_dir=output_dir, type="step") # type="stl" for mesh
+
+# <!-- ------------------------ Generate Point Cloud ------------------------- -->
+# NOTE: filename without .ply
+brep=cad_seq.save_points(filename=filename, output_dir=output_dir, n_points=8192, pointype="uniform")
+
+```
+
+
+### 4. To Check the parameters of the CAD Model
 
 ```python
 print(cad_seq)

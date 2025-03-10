@@ -89,6 +89,15 @@ class Arc(Curve):
 
         return Arc(metadata)
 
+    @staticmethod
+    def from_minimal_json(arc_stat):
+        metadata={
+            "start_point": np.array(arc_stat['Start Point']),
+            "end_point": np.array(arc_stat['End Point']),
+            "mid_point": np.array(arc_stat['Mid Point']),
+        }
+        return Arc(metadata)
+    
     def to_vec(self):
         """
         vector representation of arc
