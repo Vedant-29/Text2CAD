@@ -58,7 +58,7 @@ $  python3 json2vec.py --input_dir $DEEPCAD_JSON --split_json $TRAIN_TEST_VAL_JS
 ```
 
 
-**Download the text annotations from [here](https://huggingface.co/datasets/SadilKhan/Text2CAD).**
+**Download the text annotations from [here](https://huggingface.co/datasets/SadilKhan/Text2CAD). Download the preprocessed [training](https://huggingface.co/datasets/SadilKhan/Text2CAD/blob/main/text2cad_v1.0/train_data.pkl) and [validation](https://huggingface.co/datasets/SadilKhan/Text2CAD/blob/main/text2cad_v1.0/validation_data.pkl) data and place it in** `Cad_VLM/dataprep` folder.
 
 # 🚀 Training
 

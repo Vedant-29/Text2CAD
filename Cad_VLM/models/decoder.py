@@ -76,7 +76,7 @@ class CADDecoder(nn.Module):
         )
 
         # List of booleans indicating which decoder layers support cross-attention
-        self.use_ca = [False] * ca_level_start + [True] * (num_heads - ca_level_start)
+        self.use_ca = [False] * ca_level_start + [True] * (num_layers - ca_level_start)
 
         # A stack of num_layers x Decoder Layer
         self.cad_decoder_layers = nn.ModuleList(

@@ -173,7 +173,7 @@ def train_model(
         split_filepath=config["train_data"]["split_filepath"],
         subsets=["train", "validation"],
         batch_size=config["train"]["batch_size"],
-        num_workers=config["train"]["num_workers"],
+        num_workers=min(config["train"]["num_workers"], os.cpu_count()),
         pin_memory=True,
         shuffle=False,  # If curriculum learning is enabled, set to False else it will automatically shuffle
         prefetch_factor=config["train"]["prefetch_factor"],
@@ -197,8 +197,8 @@ def train_model(
         model.load_state_dict(checkpoint["model_state_dict"], strict=False)
         if "optimizer_state_dict" in checkpoint:
             optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
-        start_epoch = checkpoint["epoch"] + 1
-        step = checkpoint["step"]
+        start_epoch = checkpoint.get("epoch",0) + 1
+        step = checkpoint.get("step",0)
     else:
         step = 0
         start_epoch = 1

@@ -80,8 +80,8 @@ class CoordinateSystem(object):
             
         }
         rot_matrix = R.from_euler(
-            seq="zyx", angles=metadata["euler_angles"], degrees=False
-        ).as_matrix()
+            seq="zyx", angles=metadata["euler_angles"], degrees=True
+        ).as_matrix() # Euler angles are in degrees in minimal json
         metadata['x_axis'] = rot_matrix[0]
         metadata['y_axis'] = rot_matrix[1]
         metadata['z_axis'] = rot_matrix[2]
