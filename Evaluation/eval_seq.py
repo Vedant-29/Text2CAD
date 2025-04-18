@@ -120,8 +120,8 @@ def generate_analysis_report(data,output_path,logger,verbose,level):
 
 def process_vec(pred_vec,gt_vec,bit,uid):
     try:
-        pred_cad=CADSequence.from_vec(pred_vec,2,8,denumericalize=False)
-        gt_cad=CADSequence.from_vec(gt_vec,2,8,denumericalize=False)
+        pred_cad=CADSequence.from_vec(pred_vec,8,denumericalize=False)
+        gt_cad=CADSequence.from_vec(gt_vec,8,denumericalize=False)
 
         report_df,cm=gt_cad.generate_report(pred_cad,uid)
         
