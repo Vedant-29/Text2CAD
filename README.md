@@ -126,9 +126,6 @@ In the `Cad_VLM/config/inference_user_input.yaml`, provide the following path.
 <p>
 
 - `cache_dir`: The directory to load model weights from Huggingface.
-- `cad_seq_dir`: The root directory that contains the ground truth CAD vector.
-- `prompt_path`: Path for the text annotation.
-- `split_filepath`: Json file containing the UIDs for train, test or validation.
 - `log_dir`: Directory for saving _logs, outputs, checkpoints_.
 - `checkpoint_path`: The path to model weights.
 - `prompt_file` (Optional): For single prompt ignore it, for multiple prompts provide a txt file.
@@ -152,6 +149,20 @@ In the `Cad_VLM/config/inference_user_input.yaml`, provide the following path.
   ```
 
 # 💻 Run Demo
+
+
+In the `Cad_VLM/config/inference_user_input.yaml`, provide the following path.
+
+<details><summary>Required Updates in yaml</summary>
+<p>
+
+- `cache_dir`: The directory to load model weights from Huggingface.
+- `log_dir`: Directory for saving _logs, outputs, checkpoints_.
+- `checkpoint_path`: The path to model weights.
+
+</p>
+</details> 
+<br>
 
 ```bash
 $ cd App
@@ -192,14 +203,5 @@ author={Mohammad Sadil Khan and Sankalp Sinha and Sheikh Talha Uddin and Didier 
 booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems},
 year={2024},
 url={https://openreview.net/forum?id=5k9XeHIK3L}
-}
-
-@InProceedings{Khan_2024_CVPR,
-author = {Khan, Mohammad Sadil and Dupont, Elona and Ali, Sk Aziz and Cherenkova, Kseniya and Kacem, Anis and Aouada, Djamila},
-title = {CAD-SIGNet: CAD Language Inference from Point Clouds using Layer-wise Sketch Instance Guided Attention},
-booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-month = {June},
-year = {2024},
-pages = {4713-4722}
 }
 ```
