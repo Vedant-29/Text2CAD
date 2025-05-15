@@ -197,11 +197,20 @@ If you use this dataset in your work, please consider citing the following publi
 
 
 ```
-@inproceedings{khan2024textcad,
-title={Text2CAD: Generating Sequential CAD Designs from Beginner-to-Expert Level Text Prompts},
-author={Mohammad Sadil Khan and Sankalp Sinha and Sheikh Talha Uddin and Didier Stricker and Sk Aziz Ali and Muhammad Zeshan Afzal},
-booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems},
-year={2024},
-url={https://openreview.net/forum?id=5k9XeHIK3L}
-}
+@inproceedings{text2cad,
+	author = {Khan, Mohammad Sadil and Sinha, Sankalp and Sheikh, Talha Uddin and Stricker, Didier and Ali, Sk Aziz and Afzal, Muhammad Zeshan},
+	booktitle = {Advances in Neural Information Processing Systems},
+	date-modified = {2025-05-15 4:38:45 PM +0100},
+	editor = {A. Globerson and L. Mackey and D. Belgrave and A. Fan and U. Paquet and J. Tomczak and C. Zhang},
+	pages = {7552--7579},
+	publisher = {Curran Associates, Inc.},
+	read = {0},
+	title = {Text2CAD: Generating Sequential CAD Designs from Beginner-to-Expert Level Text Prompts},
+	url = {https://proceedings.neurips.cc/paper_files/paper/2024/file/0e5b96f97c1813bb75f6c28532c2ecc7-Paper-Conference.pdf},
+	volume = {37},
+	year = {2024},
+	bdsk-url-1 = {https://proceedings.neurips.cc/paper_files/paper/2024/file/0e5b96f97c1813bb75f6c28532c2ecc7-Paper-Conference.pdf}}
 ```
+
+
+
